@@ -16,4 +16,10 @@ public class RestControladora {
         map.put("alive", true);
         return new ResponseEntity<Object>(map, HttpStatus.OK);
     }
+  /*  @GetMapping("/primeFactors?number=16")
+    public ResponseEntity<Object> primeFactors(){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put(new String[]{"number :", "2","decomposition :" ,"[ 2, 2, 2, 2 ]"});
+    return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }*/
 }

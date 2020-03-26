@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
+
 @Controller
 public class Controladora {
 
@@ -21,10 +23,11 @@ public class Controladora {
         ModelAndView model = new ModelAndView("contactme");
         return model;
     }
-    @GetMapping("/readme")
-public ModelAndView readme(){
-        ModelAndView model=new ModelAndView("readme");
-        return model;
+
+    @GetMapping("/minesweeper")
+    public ModelAndView minesweeper(){
+        ModelAndView model = new ModelAndView("minesweeper");
+    return  model;
     }
 
 }

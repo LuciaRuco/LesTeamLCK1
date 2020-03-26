@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class RestControladora {
 
     @GetMapping("/ping")
     public ResponseEntity<Object> ping(){

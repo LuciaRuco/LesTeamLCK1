@@ -27,7 +27,7 @@ public class Controladora {
     @GetMapping("/minesweeper")
     public ModelAndView minesweeper(){
         ModelAndView model = new ModelAndView("minesweeper");
-    return  model;
+        return  model;
     }
 
 }

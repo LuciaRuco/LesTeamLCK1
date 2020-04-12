@@ -34,23 +34,28 @@ public class RestControladora {
      devolve um JSON contendo o number e um array da decomposicao do number
     * */
     @GetMapping("/primeFactors")
-    public ResponseEntity<Object> primeFactors(@RequestParam(value = "number", defaultValue = "1") int number) {
+    public ResponseEntity<Object> primeFactors(@RequestParam(value = "number", defaultValue = "1") String number) {
 
         ArrayList<Integer> ret= new ArrayList<>();
-        int result=number;
-
-
-        while (result!=1){
-            int divid=2;
-            while (result%divid != 0){
-                divid++;
-            }
-            ret.add(divid);
-            result = result/divid;
-        }
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("number",number);
-        map.put("decomposition", ret);
+        try {
+            int result = Integer.parseInt(number);
+
+
+            while (result != 1) {
+                int divid = 2;
+                while (result % divid != 0) {
+                    divid++;
+                }
+                ret.add(divid);
+                result = result / divid;
+            }
+            map.put("number", number);
+            map.put("decomposition", ret);
+        } catch (NumberFormatException e) {
+            map.put("number", number);
+            map.put("error", "not a number");
+        }
         return new ResponseEntity<Object>(map,HttpStatus.OK);
     }
 

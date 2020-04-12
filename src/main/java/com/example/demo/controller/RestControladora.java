@@ -40,7 +40,11 @@ public class RestControladora {
         Map<String, Object> map = new HashMap<String, Object>();
         try {
             int result = Integer.parseInt(number);
-
+            if(result>1000000){
+                map.put("number", number);
+                map.put("error", "too big number (>1e6)");
+                return new ResponseEntity<Object>(map,HttpStatus.OK);
+            }
 
             while (result != 1) {
                 int divid = 2;

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class RestControladora {
     @GetMapping("/primeFactors")
     public ResponseEntity<Object> primeFactors(@RequestParam(value = "number", defaultValue = "1") int number) {
 
-        JSONArray ret= new JSONArray();
+        ArrayList<Integer> ret= new ArrayList<>();
         int result=number;
 
 
@@ -44,12 +45,12 @@ public class RestControladora {
             while (result%divid != 0){
                 divid++;
             }
-            ret.put(divid);
+            ret.add(divid);
             result = result/divid;
         }
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("number",number);
-        map.put("decomposition", ret.toString());
+        map.put("decomposition", ret);
         return new ResponseEntity<Object>(map,HttpStatus.OK);
     }
 

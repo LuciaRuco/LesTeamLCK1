@@ -36,5 +36,10 @@ public class Controladora {
         ModelAndView model = new ModelAndView("readm");
         return  model;
     }
+    @RequestMapping(value="/astroport", method = RequestMethod.GET)
+    public ModelAndView astroport(){
+        ModelAndView model = new ModelAndView("astroport");
+        return  model;
+    }
 
 }

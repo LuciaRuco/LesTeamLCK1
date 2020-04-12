@@ -27,7 +27,7 @@ public class PrincipalMain {
      devolve um JSON contendo o number e um array da decomposicao do number
     * */
     @GetMapping("/primeFactors")
-    public JSONObject primeFactors(@RequestParam(value = "number", defaultValue = "1") int number) throws JSONException {
+    public String primeFactors(@RequestParam(value = "number", defaultValue = "1") int number) throws JSONException {
 
         JSONArray ret= new JSONArray();
         int result=number;
@@ -45,7 +45,7 @@ public class PrincipalMain {
 
         retorno.put("decomposition", ret);
 
-        return retorno;
+        return retorno.toString();
     }
 
 }

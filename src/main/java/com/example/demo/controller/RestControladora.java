@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +29,9 @@ public class RestControladora {
     @GetMapping("/primeFactors")
     public ResponseEntity<Object> primeFactors(@RequestParam(value = "number", defaultValue = "1") ArrayList<String> number) {
         ArrayList<Map> response = new ArrayList<>();
-
+        Map<String, Object> map;
         for (String num:number) {
-            Map<String, Object> map = new HashMap<>();
+            map = new HashMap<>();
             try {
                 int result = Integer.parseInt(num);
                 if(result>1000000){
@@ -55,10 +54,10 @@ public class RestControladora {
                 map.put("number", num);
                 map.put("error", "not a number");
             }
-            response.add(map);
+            //response.add(map);
 
         }
-        return new ResponseEntity<>(response,HttpStatus.OK);
+        return new ResponseEntity<>(map,HttpStatus.OK);
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,30 +39,31 @@ public class RestControladora {
     public ResponseEntity<Object> primeFactors(@RequestParam(value = "number", defaultValue = "1") String number) {
 
         ArrayList<Integer> ret= new ArrayList<>();
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();        JSONObject retJson=new JSONObject();
         try {
             int result = Integer.parseInt(number);
             if(result>1000000){
                 map.put("number", number);
                 map.put("error", "too big number (>1e6)");
-                return new ResponseEntity<Object>(map,HttpStatus.OK);
-            }
-
-            while (result != 1) {
-                int divid = 2;
-                while (result % divid != 0) {
-                    divid++;
+                //return new ResponseEntity<Object>(map,HttpStatus.OK);
+            }else{
+                while (result != 1) {
+                    int divid = 2;
+                    while (result % divid != 0) {
+                        divid++;
+                    }
+                    ret.add(divid);
+                    result = result / divid;
                 }
-                ret.add(divid);
-                result = result / divid;
+                //JSONObject retJson=new JSONObject();
+                map.put("number", number);
+                map.put("decomposition", ret);
             }
-            map.put("number", number);
-            map.put("decomposition", ret);
         } catch (NumberFormatException e) {
             map.put("number", number);
             map.put("error", "not a number");
         }
-        return new ResponseEntity<Object>(map,HttpStatus.OK);
+        return new ResponseEntity<>(map.toString(),HttpStatus.OK);
     }
 
 }

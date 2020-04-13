@@ -54,10 +54,9 @@ public class RestControladora {
                 map.put("number", num);
                 map.put("error", "not a number");
             }
-            //response.add(map);
-
+            response.add(map);
         }
-        return new ResponseEntity<>(map,HttpStatus.OK);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
 }

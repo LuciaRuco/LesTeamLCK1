@@ -29,7 +29,7 @@ public class RestControladora {
     @GetMapping("/primeFactors")
     public ResponseEntity<Object> primeFactors(@RequestParam(value = "number", defaultValue = "1") ArrayList<String> number) {
         ArrayList<Map> response = new ArrayList<>();
-        Map<String, Object> map;
+        Map<String, Object> map = new HashMap<>();
         for (String num:number) {
             map = new HashMap<>();
             try {

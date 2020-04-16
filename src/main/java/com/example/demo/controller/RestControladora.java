@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,5 +60,13 @@ public class RestControladora {
         }
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
+
+    @GetMapping("/primeFactors/ui")
+    public ModelAndView primeFactorsViwer(){
+        ModelAndView model = new ModelAndView("primeFactors");
+        return model;
+    }
+
+
 
 }
